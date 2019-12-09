@@ -8,7 +8,8 @@ top_python_learn = subreddit.top()
 db = dataset.connect('sqlite:///reddit_learnpython.db')
 # table = db['top posts']
 # table = db['r/learnpython top posts']
-table = db['test']
+# table = db['test']
+table = db['r/learnpython top']
 
 if __name__ == '__main__':
     for submission in top_python_learn:
