@@ -26,29 +26,38 @@ def get_submissions(subreddit_name):
         submission_as_dict['sub_score'] = submission.score
         submission_as_dict['sub_comms_num'] = submission.num_comments
         all_submissions.append(submission_as_dict)
-    # for submission in new_submissions:
-    #     submission_as_dict = {}
-    #     submission_as_dict['title'] = submission.title
-    #     submission['category'] = 'new'
-    #     all_submissions.append(submission)
+    for submission in new_submissions:
+        submission_as_dict = {}
+        submission_as_dict['subreddit'] = subreddit_name
+        submission_as_dict['category'] = 'new'
+        submission_as_dict['title'] = submission.title
+        submission_as_dict['sub_title'] = submission.title
+        submission_as_dict['sub_url'] = submission.url
+        submission_as_dict['sub_id'] = submission.id 
+        submission_as_dict['sub_score'] = submission.score
+        submission_as_dict['sub_comms_num'] = submission.num_comments
+        all_submissions.append(submission_as_dict)
     return all_submissions
 
-def test_get_submissions():
-    subreddit_name = 'learnpython'
-    top_submissions = get_submissions(subreddit_name)
-    for submission in top_submissions:
-        assert submission.title
-        assert submission.url
-        assert submission.id
-        assert submission.score
-        assert submission.num_comments
+# def test_get_submissions():
+#     subreddit_name = 'learnpython'
+#     top_submissions = get_submissions(subreddit_name)
+#     for submission in top_submissions:
+#         assert submission.title
+#         assert submission.url
+#         assert submission.id
+#         assert submission.score
+#         assert submission.num_comments
         
 # subreddits = ['learnpython', 'funny', 'AskReddit', 'todayilearned', 'worldnews']
 subreddits = ['learnpython']
 
 db = dataset.connect('sqlite:///reddit_learnpython.db')
 # table = db['test_3']
-table = db['test_4']
+# table = db['test_4']
+# table = db['test_5']
+table = db['test_6']
+
 
 if __name__ == '__main__':
     for subreddit in subreddits:
