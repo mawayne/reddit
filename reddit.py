@@ -47,12 +47,13 @@ def test_get_submissions():
 subreddits = ['learnpython']
 
 db = dataset.connect('sqlite:///reddit_learnpython.db')
-table = db['test_3']
+# table = db['test_3']
+table = db['test_4']
 
 if __name__ == '__main__':
     for subreddit in subreddits:
         submissions = get_submissions(subreddit)
         for submission in submissions:
-            create_dict_from_submission = dict(title=submission_as_dict['sub_title'], url=submission_as_dict['sub_url'], sub_id=submission_as_dict['sub_id'], score=submission_as_dict['sub_score'], comms_num=submission_as_dict['sub_comms_num'])
+            # create_dict_from_submission = dict(title=submission_as_dict['sub_title'], url=submission_as_dict['sub_url'], sub_id=submission_as_dict['sub_id'], score=submission_as_dict['sub_score'], comms_num=submission_as_dict['sub_comms_num'])
             # submission_as_dict = create_dict_from_submission(submission)
             table.insert(submission)
