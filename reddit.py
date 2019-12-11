@@ -30,13 +30,52 @@ def get_submissions(subreddit_name):
         submission_as_dict = {}
         submission_as_dict['subreddit'] = subreddit_name
         submission_as_dict['category'] = 'new'
-        submission_as_dict['title'] = submission.title
         submission_as_dict['sub_title'] = submission.title
         submission_as_dict['sub_url'] = submission.url
         submission_as_dict['sub_id'] = submission.id 
         submission_as_dict['sub_score'] = submission.score
         submission_as_dict['sub_comms_num'] = submission.num_comments
         all_submissions.append(submission_as_dict)
+    for submission in hot_submissions:
+        submission_as_dict = {}
+        submission_as_dict['subreddit'] = subreddit_name
+        submission_as_dict['category'] = 'hot'
+        submission_as_dict['sub_title'] = submission.title
+        submission_as_dict['sub_url'] = submission.url
+        submission_as_dict['sub_id'] = submission.id 
+        submission_as_dict['sub_score'] = submission.score
+        submission_as_dict['sub_comms_num'] = submission.num_comments
+        all_submissions.append(submission_as_dict)
+    for submission in rising_submissions:
+        submission_as_dict = {}
+        submission_as_dict['subreddit'] = subreddit_name
+        submission_as_dict['category'] = 'rising'
+        submission_as_dict['sub_title'] = submission.title
+        submission_as_dict['sub_url'] = submission.url
+        submission_as_dict['sub_id'] = submission.id 
+        submission_as_dict['sub_score'] = submission.score
+        submission_as_dict['sub_comms_num'] = submission.num_comments
+        all_submissions.append(submission_as_dict)
+    # for submission in gilded_submissions:
+    #     submission_as_dict = {}
+    #     submission_as_dict['subreddit'] = subreddit_name
+    #     submission_as_dict['category'] = 'gilded'
+    #     submission_as_dict['sub_title'] = submission.title
+    #     submission_as_dict['sub_url'] = submission.url
+    #     submission_as_dict['sub_id'] = submission.id 
+    #     submission_as_dict['sub_score'] = submission.score
+    #     submission_as_dict['sub_comms_num'] = submission.num_comments
+    #     all_submissions.append(submission_as_dict)
+    for submission in controversial_submissions:
+        submission_as_dict = {}
+        submission_as_dict['subreddit'] = 'controversial'
+        submission_as_dict['subreddit'] = subreddit_name
+        submission_as_dict['sub_title'] = submission.title
+        submission_as_dict['sub_url'] = submission.url
+        submission_as_dict['sub_id'] = submission.id 
+        submission_as_dict['sub_score'] = submission.score
+        submission_as_dict['sub_comms_num'] = submission.num_comments
+        all_submissions.append(submission_as_dict)       
     return all_submissions
 
 # def test_get_submissions():
@@ -49,14 +88,20 @@ def get_submissions(subreddit_name):
 #         assert submission.score
 #         assert submission.num_comments
         
-# subreddits = ['learnpython', 'funny', 'AskReddit', 'todayilearned', 'worldnews']
-subreddits = ['learnpython']
+subreddits = ['learnpython', 'funny', 'AskReddit', 'todayilearned', 'worldnews']
+# subreddits = ['learnpython']
 
 db = dataset.connect('sqlite:///reddit_learnpython.db')
 # table = db['test_3']
 # table = db['test_4']
 # table = db['test_5']
-table = db['test_6']
+# table = db['test_6']
+# table = db['test_7']
+# table = db['test_8']
+# table = db['test_9']
+# table = db['test_10']
+table = db['test_11']
+
 
 
 if __name__ == '__main__':
