@@ -56,7 +56,7 @@ def get_submissions(subreddit_name):
         submission_as_dict['sub_score'] = submission.score
         submission_as_dict['sub_comms_num'] = submission.num_comments
         all_submissions.append(submission_as_dict)
-    # for submission in gilded_submissions:
+    for submission in gilded_submissions:
     #     submission_as_dict = {}
     #     submission_as_dict['subreddit'] = subreddit_name
     #     submission_as_dict['category'] = 'gilded'
@@ -64,8 +64,8 @@ def get_submissions(subreddit_name):
     #     submission_as_dict['sub_url'] = submission.url
     #     submission_as_dict['sub_id'] = submission.id 
     #     submission_as_dict['sub_score'] = submission.score
-    #     submission_as_dict['sub_comms_num'] = submission.num_comments
-    #     all_submissions.append(submission_as_dict)
+        submission_as_dict['sub_comms_num'] = submission.num_comments
+        all_submissions.append(submission_as_dict)
     for submission in controversial_submissions:
         submission_as_dict = {}
         submission_as_dict['subreddit'] = 'controversial'
@@ -100,7 +100,8 @@ db = dataset.connect('sqlite:///reddit_learnpython.db')
 # table = db['test_8']
 # table = db['test_9']
 # table = db['test_10']
-table = db['test_11']
+# table = db['test_11']
+table = db['test_12']
 
 
 
