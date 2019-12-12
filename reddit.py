@@ -129,8 +129,17 @@ db = dataset.connect('sqlite:///sqlite_testing.db')
 table = db['reddit_submissions']
 
 if __name__ == '__main__':
-    for subreddit in subreddits:
-        submissions = get_submissions(subreddit)
-        for submission in submissions:
-            table.insert(submission)
-    
+    # for subreddit in subreddits:
+    #     submissions = get_submissions(subreddit)
+    #     for submission in submissions:
+    #         table.insert(submission)
+
+# Print assertion for test_len_table()
+    for row in table:
+        print(type(row))
+
+# Print assertion for test_table_columns()
+    print(table.columns)
+
+# Print assertion for test_row_datatype()
+    print(len(table))
