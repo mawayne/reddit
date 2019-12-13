@@ -23,32 +23,32 @@ def get_submissions(subreddit_name):
             category = category_name
         submissions = category_submissions
         for submission in submissions:
-            submission_as_dict = {'subreddit': subreddit_name, 
-                                'category': category, 
-                                'sub_title': submission.title, 
-                                'sub_url': submission.url,
-                                'sub_id': submission.id,
-                                'sub_score': submission.score,
-                                'sub_comms_num': submission.num_comments,
-                                #   'sub_author': submission.author,
-                                'time_created_utc': submission.created_utc,
-                                'is_original_content': submission.is_original_content,
-                                'self_post': submission.is_self,
-                                'sub_full_name': submission.name,
-                                'over_18': submission.over_18,
-                                'permalink': submission.permalink,
-                                'sub_selftext': submission.selftext,
-                                'sub_stickied': submission.stickied,
-                                #   'sub_subreddit': submission.subreddit,
-                                'upvote_ratio': submission.upvote_ratio
-                                }
-            all_submissions.append(submission_as_dict)
+            submission_as_dict = {}
+            submission_as_dict['subreddit'] = subreddit_name
+            submission_as_dict['category'] = 'controversial'
+            submission_as_dict['sub_title'] = submission.title
+            submission_as_dict['sub_url'] = submission.url
+            submission_as_dict['sub_id'] = submission.id 
+            submission_as_dict['sub_score'] = submission.score
+            submission_as_dict['sub_comms_num'] = submission.num_comments
+            # submission_as_dict['sub_author'] = submission.author - Author attribute creates it's own instance (refer to notes in Notion) - figure out how to add to table.
+            submission_as_dict['time_created_utc'] = submission.created_utc 
+            submission_as_dict['is_original_content'] = submission.is_original_content
+            submission_as_dict['self_post'] = submission.is_self
+            submission_as_dict['sub_full_name'] = submission.name
+            submission_as_dict['nsfw'] = submission.over_18
+            submission_as_dict['permalink'] = submission.permalink
+            submission_as_dict['sub_selftext'] = submission.selftext
+            submission_as_dict['sub_stickied'] = submission.stickied
+            # submission_as_dict['sub_subreddit'] = submission.subreddit - Subreddit attribute creates it's own instance (refer to notes in Notion) - figure out how to add to table.
+            submission_as_dict['upvotes_percentage'] = submission.upvote_ratio
+            all_submissions.append(submission_as_dict)       
     return all_submissions       
 
 subreddits = ['learnpython', 'funny', 'AskReddit', 'todayilearned', 'worldnews']
 
 db = dataset.connect('sqlite:///test.db')
-table = db['test2']
+table = db['test4']
 
 if __name__ == '__main__':
     for subreddit in subreddits:
